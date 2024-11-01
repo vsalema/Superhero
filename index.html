@@ -8,7 +8,7 @@
    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/scss/_root.scss
   " rel="stylesheet" />
   
-  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
   
   
   
@@ -50,12 +50,7 @@
         margin-top: 10px;
     }
     
-   #my-video {
-  width: 70vw;
-  height: 600px;
-  margin: 0 auto;
-  margin-top: 10;
-}
+  
     
     .video-js .vjs-big-play-button {
         top: 50%;
@@ -70,16 +65,32 @@
     #container li:hover {
         color: blueviolet;
     }
-</style>
+
+  
+ul {
+  list-style: none;
+  height: 100px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  
+  li {
+    height: 30px;
+    background: #ccc;
+    border-bottom: black 1px solid;
+  }
+  
+}
+  </style>
 
 <body>
     <!-- Top Bar -->
-   <div id="top-bar">
-        <h2>Easy Web Tv</h2>
-    </div>
+   
+  
+  
+ 
     <!-- The element where the player will be placed -->
     <div id="player">
-        <video autoplay id="my-video" class="video-js" controls preload="auto" poster="MY_VIDEO_POSTER.jpg" data-setup="{}">
+        <video autoplay id="my-video" class="js-video video-js vjs-16-9 vjs-big-play-centered" controls preload="auto" poster="MY_VIDEO_POSTER.jpg" data-setup="{}">
           <source src="https://d277k9d1h9dro4.cloudfront.net/out/v1/293e7c3464824cbd8818ab8e49dc5fe9/index.m3u8" type="application/x-mpegURL" />
           <p class="vjs-no-js">
             To view this video please enable JavaScript, and consider upgrading to a
@@ -91,8 +102,12 @@
         </video>
     </div>
     <!-- The element where the channel list -->
-    <div class="container">
-  <div class="channel-list" id="List">Channels:
+    
+ 
+  <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
+  <div class="container">
+  
+      <div class="channel-list" id="List">Channels:
     <ul id="container"></ul>
   </div>
     <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
@@ -101,10 +116,20 @@
         $.ajax({
                 type: "GET",
                 url: 'https://raw.githubusercontent.com/inspirationlinks/m3u/live/pt.m3u8',
-                success: function(message, text,data, response) {
+                   
+            
+          
+          success: function(message, text,data, response) {
                  
                   
-                  let str = message
+                 
+          
+            
+            
+            
+            
+            
+            let str = message
                     let array = str.split(" ")
                     let links = array.filter(x => /[^h]+.m3u8/.test(x)).map(x => x.split("\n")).flat().filter(x => /[^h]+.m3u8/.test(x))
                     for (let i of links) {
