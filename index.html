@@ -1,153 +1,44 @@
-<html lang="en">
+<!DOCTYPE html>
+<html lang='en' class=''>
 
 <head>
-  <meta property="og:url" content="http://www.elahmad.com/tv/stream_player.php">
-  
-  <link href="https://vsalema.github.io/tvpt4/css/tresmin.css" rel="stylesheet" />
-    
-   <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/scss/_root.scss
-  " rel="stylesheet" />
-  
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-  
-  
-  
-  
-  
-  <script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
-  
+  <meta charset='UTF-8'>
+  <title>Dreamworks</title>
 
-<script src="http://www.elahmad.com/js/pace.js"></script>
-
-  
-  
-  
-  </head>
-<style>
-    body,
-    html {
-        background: #111111;
-        overflow-x: hidden;
-    }
-    
-    #top-bar {
-        width: 100%;
-        height: 40px;
-        background: #111222;
-    }
-    
-    #top-bar h2 {
-        color: #fff;
-        margin: 0 auto;
-        text-align: center;
-        top: 5px;
-        position: relative;
-    }
-    
-    #player-wrapper {
-        margin-top: 10px;
-    }
-    
-  
-    
-    .video-js .vjs-big-play-button {
-        top: 50%;
-        left: 50%;
-    }
-    
-    #container li {
-        cursor: pointer;
-        color: #fff;
-    }
-    
-    #container li:hover {
-        color: blueviolet;
-    }
-
-  
-ul {
-  list-style: none;
-  height: 100px;
-  overflow-x: hidden;
-  overflow-y: scroll;
-  
-  li {
-    height: 30px;
-    background: #ccc;
-    border-bottom: black 1px solid;
+  <meta name="robots" content="noindex">
+  <style>
+  .overlay {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: rgba(51,51,51,0.7);
+    z-index: 10;
   }
-  
-}
   </style>
 
+</head>
 <body>
-    <!-- Top Bar -->
-   
-  
-  
- 
-    <!-- The element where the player will be placed -->
-    <div id="player">
-        <video autoplay id="my-video" class="js-video video-js vjs-16-9 vjs-big-play-centered" controls preload="auto" poster="MY_VIDEO_POSTER.jpg" data-setup="{}">
-          <source src="https://d1zx6l1dn8vaj5.cloudfront.net/out/v1/b89cc37caa6d418eb423cf092a2ef970/index.m3u8" type="application/x-mpegURL" />
-          <p class="vjs-no-js">
-            To view this video please enable JavaScript, and consider upgrading to a
-            web browser that
-            <a href="https://videojs.com/html5-video-support/" target="_blank"
-              >supports HTML5 video</a
-            >
-          </p>
-        </video>
-    </div>
-    <!-- The element where the channel list -->
-    
- 
-  <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
-  <div class="container">
-  
-      <div class="channel-list" id="List">Channels:
-    <ul id="container"></ul>
-  </div>
-    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-      <script src="https://vjs.zencdn.net/7.11.4/video.min.js"></script>
-    <script>
-        $.ajax({
-                type: "GET",
-                url: 'https://raw.githubusercontent.com/inspirationlinks/m3u/live/pt.m3u8',
-                   
-            
-          
-          success: function(message, text,data, response) {
-                 
-                  
-                 
-          
-            
-            
-            
-            
-            
-            let str = message
-                    let array = str.split(" ")
-                    let links = array.filter(x => /[^h]+.m3u8/.test(x)).map(x => x.split("\n")).flat().filter(x => /[^h]+.m3u8/.test(x))
-                    for (let i of links) {
-                        $("#container").append("<ul><li>" + i + "</li></ul>")
-                    }
-                }
-            })
-            //Click channel to play it
-        $("#container").on('click', 'li', function() {
-            var player = videojs(document.querySelector('.video-js'));
-            player.src({
-                src: $(this).text(),
-                type: 'application/x-mpegURL' /*video type*/
-            });
 
-            player.play();
-        });
-    </script>
+<div class="overlay" id="kaltura_player_979444041"></div>
+                    <script class="overlay" type="text/javascript" src="https://cdnapisec.kaltura.com/p/3253003/embedPlaykitJs/uiconf_id/55496902"></script>
+                    <script type="text/javascript">
+                    try {
+                      var kalturaPlayer = KalturaPlayer.setup({
+                        targetId: "kaltura_player_979444041",
+                        provider: {
+                          partnerId: 3253003,
+                          uiConfId: 55496902
+                        }
+                      });
+                      kalturaPlayer.loadPlaylist({playlistId: '1_fjk5dnvu'});
+                    } catch (e) {
+                      console.error(e.message)
+                    }
+                  </script>
+  
 </body>
 
 </html>
